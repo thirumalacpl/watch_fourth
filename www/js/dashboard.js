@@ -521,6 +521,29 @@ alert('Network error has occurred please try again!');
 }); 
 }
     });
+
+    push.on('notification', function(data) {
+          console.log("notification event");
+            console.log(JSON.stringify(data));
+            var cards = document.getElementById("cards");
+           alert(data.title + data.message);
+           /* var card = '<div class="row">' +
+            '<div class="col s12 m6">' +
+          '  <div class="card darken-1">' +
+          '    <div class="card-content black-text">' +
+          '      <span class="card-title black-text">' + data.title + '</span>' +
+          '      <p>' + data.message + '</p>' +
+          '    </div>' +
+          '  </div>' +
+          ' </div>' +
+          '</div>';
+            cards.innerHTML += card;*/
+            
+            push.finish(function () {
+                console.log('finish successfully called');
+            });
+        });
+
         push.on('error', function(e) {
             console.log("push error");
         });
